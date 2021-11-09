@@ -1,0 +1,30 @@
+*{
+    font-size: 16pt;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+header{
+    position: absolute;
+}
+footer{
+    background-color: black;
+    color: cornsilk;
+    font-size: 7pt;
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+
+}
+.imagen{
+    width: 8cm;
+    height: 10cm;
+}
+.classRRSS{
+    display: flex;
+    flex-direction: row;
+    gap: 4%;
+}
+#inspiracion{
+    color: darkblue;
+
+}

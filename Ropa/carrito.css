@@ -1,0 +1,10 @@
+.encabezado{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: medium;
+    background-color: darkcyan transparent;
+}
+header{
+    position: absolute;
+}
