@@ -1,9 +1,9 @@
-let jersey={
+let sudadera={
     "nombre":"sudadera",
     "precio":12
 
 }
-let mochile={
+let mochila={
     "nombre":"mochila",
     "precio":14
 
@@ -19,34 +19,35 @@ let jersey={
     "precio":18
 
 }
-let añadir1=getElementById("bsudadera").sudadera.precio ++
-let añadir2=getElementById("bmochilaVerde").mochila.precio ++
-let añadir3=getElementById("bGorroRojo").gorro.precio ++
-let añadir4=getElementById("BjerseyMarron").jersey.precio ++
+let tienda=[sudadera, mochila,gorro,jersey]
+
 
 let carrito=[]
-function añadir1Carrito(){
-    carrito.push(añadir1)
+function añadirCarrito(posicion){
+    carrito.push(tienda[posicion])
+
+    console.log(carrito)
 
 }
-function añadir2Carrito(){
-    carrito.push(añadir2)
-}
 
- function añadir3Carrito(){
-    carrito.push(añadir3)
-    
-}
-function añadir4Carrito(){
-    carrito.push(añadir4)
-
+function escribirCarrito()
+{
+   for(let i=0; i<carrito.length; i++)
+     document.getElementById("escribirCarrito").innerHTML += carrito[i].nombre + " " +carrito[i].precio + "€"+"\n"
 }
 
 function total()
 {
+
     let suma=0
     for (let i = 0; i < carrito.length; i++) {
-        suma += carrito[i];
+        suma += carrito[i].precio;
     }
-    alert("Su compra es de " + suma +"€")
+    document.getElementById("escribirCarrito").innerHTML= "El total es de: " +suma+ "€"
+    
+}
+function borrar()
+{
+    return carrito =[]
+
 }

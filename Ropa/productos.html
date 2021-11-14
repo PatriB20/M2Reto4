@@ -18,6 +18,9 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="escribirCarrito()">
+            CARRITO
+          </button>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasNavbarLabel">RopaExpress</h5>
@@ -32,6 +35,7 @@
                   <a class="nav-link" href="./productos.html">Productos</a>
                 </li>
             </div>
+         
     </header>
   <section class="cards">
     <div class="card" style="width: 18rem; height: 500px; height: 450px;">
@@ -39,7 +43,7 @@
       <div class="card-body">
         <h5 class="card-title">SUDADERA GRIS</h5>
         <p class="card-text">Sudadera gris. Unisex. 100% algodon. Precio: 12€</p>
-        <a id="sudadera" class="btn btn-dark" id="sudaderaGris" onclick="añadir1Carrito()">Añadir alcarrito</a>
+        <a id="sudadera" class="btn btn-dark" id="sudaderaGris" onclick="añadirCarrito(0)">CARRITO</a>
       </div>
     </div>
     <div class="card" style="width: 18rem; height: 450px;" >
@@ -47,17 +51,17 @@
       <div class="card-body">
         <h5 class="card-title">MOCHILA VERDE</h5>
         <p class="card-text">Mochila de color verde. Con capacidad de 10l. Precio:14€</p>
-        <a id="mochila" class="btn btn-dark" id="bmochilaVerde" onclick="añadir2Carrito()">Añadir al carrito</a>
+        <a id="mochila" class="btn btn-dark" id="bmochilaVerde" onclick="añadirCarrito(1)">CARRITO</a>
       </div>
     </div>
   </section>
-  <section class= "cards">
+  <section class= "cards" >
     <div class="card" style="width: 18rem; height: 450px;">
       <img src="./gorroRojo.jpg" class="card-img-top" alt="..." style="height: 275px;">
       <div class="card-body">
         <h5 class="card-title">GORRO ROJO</h5>
         <p class="card-text">Gorro de color rojo. Unisex. 100% algodon. Precio: 5€</p>
-        <a id="gorro" class="btn btn-dark" id="bGorroRojo" onclick="añadir3Carrito()">Añadir al carrito</a>
+        <a id="gorro" class="btn btn-dark" id="bGorroRojo" onclick="añadirCarrito(2)">CARRITO</a>
       </div>
     </div>
     <div class="card" style="width: 18rem; height: 450px;">
@@ -65,12 +69,28 @@
       <div class="card-body">
         <h5 class="card-title">JERSEY MARRON</h5>
         <p class="card-text">Jersey marron. Mujer. 100% algodon. Precio:18€</p>
-        <a id="jersey" class="btn btn-dark" id="BjerseyMarron" onclick="añadir4Carrito()">Añadir al carrito</a>
+        <a id="jersey" class="btn btn-dark" id="BjerseyMarron" onclick="añadirCarrito(3)">CARRITO</a>
       </div>
     </div>
   </section>
-    <p id="carrito">CARRITO</p>
-    <button type="reset" onclick="total()">TOTAL</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="escribirCarrito">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="borrar()">Cancelar</button>
+        <button type="button" class="btn btn-dark" onclick = "total()">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
   </main>
   <script src="carrito2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

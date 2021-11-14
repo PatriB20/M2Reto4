@@ -1,93 +1,76 @@
-const fs =require('fs');
-
 class Movie{
-    constructor(title,releaseYear,nacionality,genre,actors,director,writer,languaje,plataform,mainCharacterName,producer,distributor,imagen){
+    constructor(title,releaseYear,genre,languaje,plataform,mainCharacter,imagen){
         this.title = title;
         this.releaseYear = releaseYear;
-        this.nacionality = nacionality;
         this.genre = genre;
-        this.actors =actors;
-        this.director = director;
-        this.writer = writer;
         this.language = languaje;
         this.plataform = plataform;
-        this.mainCharacterName = mainCharacterName;
-        this.producer = producer;
-        this.distributor = distributor;
+        this.mainCharacterName = mainCharacter;
         this.imagen=imagen
 }
-        toPrint(){
-            console.log( "\n" + "Título: " + this.title + "\n" +
-            "Año: " + this.releaseYear + "\n"+
-            "Actores: " + this.actors + "\n"+
-            "País: " + this.nacionality + "\n" +
-            "Dirigida por: " + this.director + "\n" +
-            "Escrita por: " + this.writer + "\n" +
-            "Idioma: " + this.language + "\n" +
-            "Plataforma: " + this.plataform + "\n" +
-            "Es del Universo Marvel: " + this.IsMCUasString() + "\n" +
-            "Personaje principal: " + this.mainCharacterName + "\n" + 
-            "Producida por: " + this.producer + "\n" +
-            "Distribuída por: " + this.distributor + "\n" +
-            "Género: " + this.genre);
-        }
+      
 }
-class Imdb{
-    constructor(peliculas)
-    {
-        this.peliculas = peliculas
-    }
-    printMovies()
-    {
-        this.peliculas.forEach(peliculilla => peliculilla.toPrint())
-    }
-    
-    showMovie()
-    {
-        this.peliculas.forEach(pelicula => console.log(pelicula))
-    }
-    length()
-    {
-        return this.peliculas.length
-    }
-    escribirEnFicheroJSON(nombreFichero)
-    {
-        
-        fs.writeFileSync(nombreFichero,JSON.stringify(this.peliculas));
-    }
-    obtenerInstanciaIMDB(nombreFichero)
-    {
-        let lectura = fs.readFileSync(nombreFichero)
-        let variable = JSON.parse(lectura)
-        let imdbresultante= new Imdb(variable.peliculas)
-      return imdbresultante
-    }
-    }
 
-let movie1= new Movie ("The wolf of Wall Street",2013,"U.S","comedy",(["Leonardo DiCaprio"," Margot Robie"])
-,"Martin Scorsese","Terence Winter","English","Netflix",false,"Jordan Belfort","Leonardo DiCaprio","Leonardo DiCaprio",
-"Universal Pictures","./lobo.jpg")
+
+let movie1= new Movie ("The wolf of Wall Street",
+                    2013,
+                    "comedy",
+                    "English",
+                    "Netflix",
+                    "Jordan Belfort",
+                    "./lobo.jpg")
 
 
 
-let movie2=new Movie ("Spider-Man: Homecoming",2017,"U.S","sciencie fiction",(["Tom Holland"," Michael Keaton"," Zendaya"]),
-"Jon Whas","Jonathan Goldstein","English","Netflix",true,"Peter Parker","Kevin Feige","	Sony Pictures Releasing2","./spiderman.jpg")
+let movie2=new Movie ("Spider-Man: Homecoming",
+                        2017,
+                        "sciencie fiction",
+                        "English",
+                        "Netflix",
+                        "Peter Parker",
+                        "./spiderman.jpg")
 
 
-let movie3 = new Movie("The Big Short",2015,"U.S","biography",(["Christian Bale"," Brad Pitt"]),"Adam Mckay"
-,"Adam Mckay","English","Netflix",false,"Michael Burry","Dede Gardner","Paramount Pictures","./bigShort.jpg")
+let movie3 = new Movie("The Big Short",
+                    2015,
+                    "biography",
+                    "English",
+                    "Netflix",
+                    "Michael Burry",
+                    "./bigShort.jpg")
 
-let imdb1 = new Imdb ([movie1,movie2,movie3])
-
-
-
-
-
-
-console.log(imdb1.escribirEnFicheroJSON("./abcd.json"))
+let peliculas = []
 
 
 
+function añadirPelicula(){
+        let newMovie = new Movie (
+            document.getElementById("title").value,
+            document.getElementById("releaseYear").value,
+            document.getElementById("genre").value,
+            document.getElementById("languaje").value,
+            document.getElementById("plataform").value,
+            document.getElementById("character").value,
+            document.getElementById("imagen").value
+        )
+    peliculas.push(newMovie)
+    console.log(peliculas)
+}
 
+function pintarPeliculas()
+{
+for (let i=0;i<peliculas.length;i++)
+document.getElementById("todoPeliculas").innerHTML += ` <div class="card" style="width: 18rem;">
+                                                             <img src="${peliculas[i].imagen}" class="card-img-top" alt="...">
+                                                             <div class="card-body">
+                                                                <h5 class="card-title">${peliculas[i].title}</h5>
+                                                                <p class="card-text">Año de estreno: ${peliculas[i].releaseYear}</p>
+                                                                <p class="card-text">Genero: ${peliculas[i].genre}</p>
+                                                                <p class="card-text">Idioma: ${peliculas[i].language}</p>
+                                                                <p class="card-text">Plataforma: ${peliculas[i].plataform}</p>
+                                                                <p class="card-text">Personaje principal: ${peliculas[i].mainCharacter}</p>
+                                                           </div>
+                                                         </div>
 
-
+                      `                                  
+}
